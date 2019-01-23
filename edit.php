@@ -48,32 +48,36 @@ $email = $result['email'];
 ?>
 <html>
 <head>
-    <title>Edit Data</title>
+  <title>Edit Data</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
 <body>
-    <a href="index.php">Home</a>
-    <br/><br/>
+    <div class="container">
+        <h1>Edit Data</h1>
+    <a href="index.php"><button type="button" class="btn btn-primary">Home</button></a></br></br>
 
     <form name="form1" method="post" action="edit.php">
-        <table border="0">
-            <tr>
-                <td>Name</td>
-                <td><input type="text" name="name" value="<?php echo $name;?>"></td>
-            </tr>
-            <tr>
-                <td>Age</td>
-                <td><input type="text" name="age" value="<?php echo $age;?>"></td>
-            </tr>
-            <tr>
-                <td>Email</td>
-                <td><input type="text" name="email" value="<?php echo $email;?>"></td>
-            </tr>
-            <tr>
-                <td><input type="hidden" name="id" value=<?php echo $_GET['id'];?>></td>
-                <td><input type="submit" name="update" value="Update"></td>
-            </tr>
-        </table>
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" id="name" name="name" value="<?php echo $name;?>">
+      </div>
+      <div class="form-group">
+        <label for="age">Age:</label>
+        <input type="text" class="form-control" id="age" name="age" value="<?php echo $age;?>">
+      </div>
+      <div class="form-group">
+        <label for="email">Email Address:</label>
+        <input type="email" class="form-control" id="email" name="email" value="<?php echo $email;?>">
+      </div>
+    
+        <input type="hidden" name="id" value=<?php echo $_GET['id'];?>>
+        <button type="submit" class="btn btn-primary" name="update">Update</button>
     </form>
+  </div>
 </body>
 </html>
