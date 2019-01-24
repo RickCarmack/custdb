@@ -18,26 +18,38 @@ $result = $db->users->find()->sort(array('name' => 1));
 <body>
 <div class="container">
 
-<h1>Customer Data</h1>
+<h1>Customer Database</h1>
 
-<a href="add.html"><button type="button" class="btn btn-primary">Add New Data</button></a></br></br>
+<a href="add.php"><button type="button" class="btn btn-primary">Add New Data</button></a></br></br>
 
     <table  class="table table-striped" width='80%'>
 
     <tr>
         <td>Name</td>
+        <td>Address</td>
+        <td>City</td>
+        <td>State</td>
+        <td>ZipCode</td>
+        <td>Phone</td>
         <td>Age</td>
         <td>Email</td>
         <td>Update</td>
     </tr>
     <?php
-    foreach ($result as $res) {
+      foreach ($result as $res) {
+        // print $res['phone'];
+
         echo "<tr>";
         echo "<td>".$res['name']."</td>";
+        echo "<td>".$res['address']."</td>";
+        echo "<td>".$res['city']."</td>";
+        echo "<td>".$res['state']."</td>";
+        echo "<td>".$res['zipcode']."</td>";
+        echo "<td>".preg_replace('~.*(\d{3})[^\d]{0,7}(\d{3})[^\d]{0,7}(\d{4}).*~', '($1) $2-$3', $res['phone'])."</td>";
         echo "<td>".$res['age']."</td>";
-        echo "<td>".$res['email']."</td>";
+        echo "<td><a href=\"mailto:\">".$res['email']."</a></td>";
         echo "<td><a href=\"edit.php?id=$res[_id]\"><button type=\"button\" class=\"btn btn-warning\">Edit</button></a> | <a href=\"delete.php?id=$res[_id]\"><button type=\"button\" class=\"btn btn-danger\">Delete</button></a></td>";
-    }
+      }
     ?>
     </table>
 </div>

@@ -7,6 +7,11 @@ if(isset($_POST['update']))
     $id = $_POST['id'];
     $user = array (
                 'name' => $_POST['name'],
+                'address' => $_POST['address'],
+                'city' => $_POST['city'],
+                'state' => $_POST['state'],
+                'zipcode' => $_POST['zipcode'],
+                'phone' => $_POST['phone'],
                 'age' => $_POST['age'],
                 'email' => $_POST['email']
             );
@@ -43,6 +48,11 @@ $id = $_GET['id'];
 $result = $db->users->findOne(array('_id' => new MongoId($id)));
 
 $name = $result['name'];
+$address = $result['address'];
+$city = $result['city'];
+$state = $result['state'];
+$zipcode = $result['zipcode'];
+$phone = $result['phone'];
 $age = $result['age'];
 $email = $result['email'];
 ?>
@@ -67,6 +77,26 @@ $email = $result['email'];
         <input type="text" class="form-control" id="name" name="name" value="<?php echo $name;?>">
       </div>
       <div class="form-group">
+        <label for="age">Address:</label>
+        <input type="text" class="form-control" id="address" name="address" value="<?php echo $address;?>">
+      </div>
+      <div class="form-group">
+        <label for="city">City:</label>
+        <input type="text" class="form-control" id="city" name="city" value="<?php echo $city;?>">
+      </div>
+      <div class="form-group">
+        <label for="state">State:</label>
+        <input type="text" class="form-control" id="state" name="state"value="<?php echo $state;?>">
+      </div>
+      <div class="form-group">
+        <label for="zipcode">ZipCode:</label>
+        <input type="text" class="form-control" id="zipcode" name="zipcode" value="<?php echo $zipcode;?>">
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone:</label>
+        <input type="phone" class="form-control" id="phone" name="phone" value="<?php echo $phone;?>">
+      </div>
+      <div class="form-group">
         <label for="age">Age:</label>
         <input type="text" class="form-control" id="age" name="age" value="<?php echo $age;?>">
       </div>
@@ -74,7 +104,7 @@ $email = $result['email'];
         <label for="email">Email Address:</label>
         <input type="email" class="form-control" id="email" name="email" value="<?php echo $email;?>">
       </div>
-    
+
         <input type="hidden" name="id" value=<?php echo $_GET['id'];?>>
         <button type="submit" class="btn btn-primary" name="update">Update</button>
     </form>
