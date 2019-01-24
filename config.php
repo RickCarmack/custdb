@@ -19,5 +19,7 @@ $connection = new MongoClient("mongodb://mongo:27017");
 /**
  * Select database named "test"
  */
-$db = $connection->test;
+/* $db = $connection->test; */
+$db = $connection->customers;
+
 ?>
