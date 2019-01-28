@@ -14,6 +14,7 @@ $result = $db->users->find()->sort(array('name' => 1));
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style></style>
 </head>
 <body>
 <div class="container">
@@ -25,6 +26,7 @@ $result = $db->users->find()->sort(array('name' => 1));
     <table  class="table table-striped" width='80%'>
 
     <tr>
+        <td style="height:5px">Del</td>
         <td>Name</td>
         <td>Address</td>
         <td>City</td>
@@ -40,6 +42,7 @@ $result = $db->users->find()->sort(array('name' => 1));
         // print $res['phone'];
 
         echo "<tr>";
+        echo "<td><a href=\"delete.php?id=$res[_id]\"><button type=\"button\" class=\"btn btn-danger\">Delete</button></a></td>";
         echo "<td>".$res['name']."</td>";
         echo "<td>".$res['address']."</td>";
         echo "<td>".$res['city']."</td>";
@@ -48,7 +51,7 @@ $result = $db->users->find()->sort(array('name' => 1));
         echo "<td>".preg_replace('~.*(\d{3})[^\d]{0,7}(\d{3})[^\d]{0,7}(\d{4}).*~', '($1) $2-$3', $res['phone'])."</td>";
         echo "<td>".$res['age']."</td>";
         echo "<td><a href=\"mailto:\">".$res['email']."</a></td>";
-        echo "<td><a href=\"edit.php?id=$res[_id]\"><button type=\"button\" class=\"btn btn-warning\">Edit</button></a> | <a href=\"delete.php?id=$res[_id]\"><button type=\"button\" class=\"btn btn-danger\">Delete</button></a></td>";
+        echo "<td><a href=\"edit.php?id=$res[_id]\"><button type=\"button\" class=\"btn btn-warning\" >Edit</button></a> | <a href=\"addinvoice.php?id=$res[_id]\"><button type=\"button\" class=\"btn btn-primary\" >Add Invoice</button></a></td>";
       }
     ?>
     </table>
